@@ -1,8 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm") version "1.6.0"
-    application
 }
 
 group = "nrw.poerschke"
@@ -13,18 +10,17 @@ repositories {
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
-    implementation(kotlin("script-runtime"))
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
+tasks {
+    sourceSets {
+        main {
+            java.srcDirs("src")
+        }
+    }
 
-tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "13"
-}
-
-application {
-    mainClass.set("MainKt")
+    wrapper {
+        gradleVersion = "7.3"
+    }
 }
