@@ -2,22 +2,12 @@ import java.io.File
 
 // https://adventofcode.com/2021/day/1#part1
 fun day01_step01(input: String): Int {
-    val depths = input
+    return input
         .split("\n")
         .map { it.trim() }
         .map { it.toInt() }
-
-    var depthIncrease = 0
-    var previousDepth = depths.first()
-    for (depth in depths.drop(1)) {
-        if (previousDepth < depth) {
-            depthIncrease++
-        }
-
-        previousDepth = depth
-    }
-
-    return depthIncrease;
+        .zipWithNext { a, b -> if (b > a) 1 else 0 }
+        .sum()
 }
 
 fun test_day01_step01() {

@@ -7,21 +7,11 @@ fun day01_step02(input: String): Int {
         .map { it.trim() }
         .map { it.toInt() }
 
-    val windows = depths
+    return depths
         .zipWithNext { a, b -> a + b }
         .zip(depths.drop(2)) { a, b -> a + b }
-
-    var depthIncrease = 0
-    var previousDepth = windows.first()
-    for (window in windows.drop(1)) {
-        if (previousDepth < window) {
-            depthIncrease++
-        }
-
-        previousDepth = window
-    }
-
-    return depthIncrease;
+        .zipWithNext { a, b -> if (b > a) 1 else 0 }
+        .sum()
 }
 
 fun test_day01_step02() {
