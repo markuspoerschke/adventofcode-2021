@@ -14,4 +14,4 @@ class Day01(puzzleInput: PuzzleInput) : Solution<Int>(puzzleInput) {
         .countDecreases()
 }
 
-private fun List<Int>.countDecreases(): Int = zipWithNext { a, b -> if (b > a) 1 else 0 }.sum()
+private fun List<Int>.countDecreases(): Int = zipWithNext().count { (a, b) -> b > a }
