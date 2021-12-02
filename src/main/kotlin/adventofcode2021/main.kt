@@ -4,13 +4,13 @@ import kotlin.reflect.full.primaryConstructor
 
 fun main(args: Array<String>) {
     // todo extract day from args
-    val day = 1
+    val day = 2
 
     val solutionClassName = "adventofcode2021.solution.${day.toDayName()}"
     val solution = Class.forName(solutionClassName)
         .kotlin
         // todo run test and final result
-        .primaryConstructor?.call(PuzzleInput("Day01_test.txt"))
+        .primaryConstructor?.call(PuzzleInput("Day${day.toString().padStart(2, '0')}_test.txt"))
 
     if (solution !is Solution<*>) {
         error("Class $solutionClassName is not a instance of Solution")
