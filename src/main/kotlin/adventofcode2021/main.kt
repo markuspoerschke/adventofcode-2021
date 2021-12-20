@@ -4,7 +4,7 @@ import kotlin.reflect.full.primaryConstructor
 
 fun main(args: Array<String>) {
     // todo extract day from args
-    val day = 3
+    val day = 4
 
     val solutionClassName = "adventofcode2021.solution.${day.toDayName()}"
     val solution = Class.forName(solutionClassName)
